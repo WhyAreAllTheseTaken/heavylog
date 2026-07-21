@@ -1,0 +1,20 @@
+[package]
+name = "heavylog"
+version = "0.1.0"
+edition = "2024"
+license = "BSD-3-Clause"
+description = "A `log` implementation for no-std targets."
+documentation = "https://docs.rs/heavylog"
+readme = "README.md"
+repository = "https://github.com/WhyAreAllTheseTaken/heavylog"
+keywords = ["log", "no-std"]
+categories = ["development-tools::debugging", "no-std"]
+
+[dependencies]
+chrono = { version = "0.4.45", default-features = false, features = ["alloc"] }
+log = "0.4.33"
+
+[features]
+default = ["std"]
+std = []
+
