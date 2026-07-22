@@ -35,7 +35,7 @@
 //! 
 //! Support for times in logs can also be added by implementing the `TimeSource` trait.
 
-use core::error::Error;
+use core::{error::Error, time::Duration};
 
 use alloc::{boxed::Box, format, string::String};
 use chrono::{DateTime, Utc};
@@ -126,7 +126,9 @@ impl <O: LogOutput + Send + Sync, T: TimeSource + Send + Sync> Log for HeavyLogg
         output += &if self.relative_time {
             let duration = time.signed_duration_since(&self.boot_time);
 
-            let duration = format!("{duration}");
+            let duration = duration.to_std().unwrap_or(Duration::ZERO);
+
+            let duration = format!("{duration:?}");
 
             format!("[{duration:>10}] ")
         } else {
