@@ -126,8 +126,12 @@ impl <O: LogOutput + Send + Sync, T: TimeSource + Send + Sync> Log for HeavyLogg
         output += &if self.relative_time {
             let duration = time.signed_duration_since(&self.boot_time);
 
+            let duration = format!("{duration}");
+
             format!("[{duration:>10}] ")
         } else {
+            let time = format!("{time}");
+            
             format!("[{time:>20}] ")
         };
 

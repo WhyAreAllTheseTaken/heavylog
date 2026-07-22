@@ -14,7 +14,3 @@ categories = ["development-tools::debugging", "no-std"]
 chrono = { version = "0.4.45", default-features = false, features = ["alloc"] }
 log = "0.4.33"
 
-[features]
-default = ["std"]
-std = []
-
